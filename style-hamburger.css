@@ -47,7 +47,7 @@
 
 /* ACTIVE MENU */
 .menu.active {
-  right: 0;
+  left: 0;
 }
 
 /* OVERLAY */
