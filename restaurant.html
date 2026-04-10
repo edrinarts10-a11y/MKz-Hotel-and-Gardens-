@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+    SEO TAGS — Same idea as index.html but focused on the
+    restaurant page specifically. Google will rank this page
+    when someone searches for food or drinks in Wakiso.
+  ============================================================ -->
+
+  <!-- This shows under the page title on Google results -->
+  <meta name="description" content="MKz Gardens & Hotel Restaurant — Full menu including local food, chips, grills, beverages, wines and spirits. Open 7AM to 10PM daily in Wakiso, Uganda.">
+
+  <!-- Keywords focused on food, drinks and the restaurant -->
+  <meta name="keywords" content="restaurant Wakiso, food Wakiso, local food Wakiso, chips Wakiso, pilawo Wakiso, luwombo, matooke, Uganda Waragi, bar Wakiso, wines Wakiso, MKz restaurant, MKz Gardens menu">
+
+  <!-- Who owns the site -->
+  <meta name="author" content="MKz Gardens & Hotel Wakiso">
+
+  <!-- Tell Google to index this page too -->
+  <meta name="robots" content="index, follow">
+
+  <!-- WhatsApp / Facebook share preview for this page -->
+  <meta property="og:title" content="Restaurant Menu — MKz Gardens & Hotel Wakiso">
+  <meta property="og:description" content="Full menu — local dishes, chips, grills, beverages, wines and spirits. Open 7AM–10PM daily in Wakiso, Uganda.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_UG">
+  <title>Restaurant — MKz Gardens & Hotel Wakiso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="style-hamburger.css">
+  <link rel="stylesheet" href="style-search.css">
+  <link rel="stylesheet" href="style-restaurant.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+    
+  
+</head>
+<body>
+
+<nav class="nav">
+  MKz Gardens & Hotel
+  <i class="fas fa-search" id="search-trigger" title="Search"></i>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="menu" id="menu">
+  <a href="index.html">Home</a>
+  <a href="showroom.html">Showroom</a>
+  <a href="restaurant.html">Restaurant</a>
+  <a href=bar.html>Bar</a>
+</div>
+
+<!--search overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-top">
+      <div class="search-input-wrap">
+        <i class="fas fa-search search-input-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search menu, drinks, rooms…" autocomplete="off"/>
+        <button id="searchClear" class="search-clear-btn">✕</button>
+      </div>
+      <button class="search-close-btn" id="searchClose">Close</button>
+    </div>
+    <div class="search-tabs" id="searchTabs" style="display:none">
+      <button class="stab active" data-cat="all">All <span id="cnt-all">0</span></button>
+      <button class="stab" data-cat="rooms">🛏 Rooms <span id="cnt-rooms">0</span></button>
+      <button class="stab" data-cat="menu">🍽 Menu <span id="cnt-menu">0</span></button>
+      <button class="stab" data-cat="billing">💳 Billing <span id="cnt-billing">0</span></button>
+      <button class="stab" data-cat="general">🌿 General <span id="cnt-general">0</span></button>
+    </div>
+    <div class="search-meta" id="searchMeta"></div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-empty" id="searchEmpty">
+      <div style="font-size:2rem">🔍</div>
+      <p>No results found. Try different keywords.</p>
+    </div>
+    <div class="search-initial" id="searchInitial">
+      <p>Try searching for:</p>
+      <div class="search-hints">
+        <span class="hint" onclick="fillSearch('chips')">Chips</span>
+        <span class="hint" onclick="fillSearch('pilawo')">Pilawo</span>
+        <span class="hint" onclick="fillSearch('rolex')">Rolex</span>
+        <span class="hint" onclick="fillSearch('wine')">Wine</span>
+        <span class="hint" onclick="fillSearch('luwombo')">Luwombo</span>
+        <span class="hint" onclick="fillSearch('juice')">Juice</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-label">Fine Dining & Local Flavours</div>
+    <h1>Our <em>Restaurant</em></h1>
+    <p>From hearty Ugandan classics to grilled delights — made with care.</p>
+  </div>
+</section>
+
+<div class="hours-strip">
+  <span><i class="fas fa-clock"></i> Open 7 AM – 10 PM Daily</span>
+  <span><i class="fas fa-utensils"></i> Last Orders 9:30 PM</span>
+</div>
+
+<!-- ===== FOOD GALLERY ===== -->
+<div class="gallery-section">
+  <div class="gallery-heading">
+    <div class="eyebrow">Fresh Every Day</div>
+    <h2>From Our Kitchen</h2>
+  </div>
+  <div class="food-grid">
+    <div class="food-card tall">
+      <img src="chicken-luwombo.jpeg" loading="lazy" alt="Local dish" />
+      <div class="food-label">Local Dishes</div>
+    </div>
+    <div class="food-card">
+      <img src="omulette.jpeg" loading="lazy" alt="Chips" />
+      <div class="food-label">Chips & Grills</div>
+    </div>
+    <div class="food-card">
+      <img src="egg-roll.jpeg" loading="lazy" alt="Fast food" />
+      <div class="food-label">Fast Food</div>
+    </div>
+    <div class="food-card wide">
+      <img src="grapes.jpg" loading="lazy" alt="Breakfast" />
+      <div class="food-label">Breakfast</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== AMBIANCE: INTERIOR + GARDEN ===== -->
+<div class="ambiance-section">
+  <div class="gallery-heading">
+    <div class="eyebrow">The Vibe</div>
+    <h2>Dine With Us</h2>
+  </div>
+  <div class="ambiance-grid">
+    <div class="ambiance-card">
+      <img src="bar-outside.JPG" loading="lazy" alt="Restaurant interior" />
+      <div class="ambiance-overlay">
+        <span>🍽 Indoor Dining</span>
+      </div>
+    </div>
+    <div class="ambiance-card">
+      <img src="mkz-garden.jpg" loading="lazy" alt="Garden dining" />
+      <div class="ambiance-overlay">
+        <span>🌿 Garden Terrace</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BAR SECTION ===== -->
+<div class="bar-section">
+  <div class="bar-heading">
+    <div class="eyebrow light">Drinks & Good Times</div>
+    <h2>The Bar</h2>
+    <p>Wines, spirits, cold beers & cocktails. Live band every Saturday.</p>
+  </div>
+  <div class="bar-scroll">
+    <div class="bar-card">
+      <img src="bar1.jpg" loading="lazy" alt="Bar counter" />
+      <div class="bar-card-label">Bar Counter</div>
+    </div>
+    <div class="bar-card">
+      <img src="bar2.jpg" loading="lazy" alt="Drinks" />
+      <div class="bar-card-label">Premium Drinks</div>
+    </div>
+    <div class="bar-card">
+      <img src="bar3.jpg" loading="lazy" alt="Night atmosphere" />
+      <div class="bar-card-label">Night Atmosphere</div>
+    </div>
+    <div class="bar-card">
+      <img src="bar4.jpg" loading="lazy" alt="Live band" />
+      <div class="bar-card-label">Live Band Saturdays</div>
+    </div>
+  </div>
+</div>
+
+<!--- Menu--->
+
+<div class="section-title">
+  <div class="eyebrow">What We Serve</div>
+  <h2>Our Full Menu</h2>
+</div>
+
+<div class="menu-section" id="menu-section">
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">🍲</div><h3>Local Food</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Molokoni</div><span class="item-price">UGX 10,000</span></div>
+    <div class="menu-item"><div class="item-name">Fish</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Chicken</div><span class="item-price">UGX 17,000</span></div>
+    <div class="menu-item"><div class="item-name">Beef</div><span class="item-price">UGX 12,000</span></div>
+    <div class="menu-item"><div class="item-name">Beans</div><span class="item-price">UGX 6,000</span></div>
+    <div class="menu-item"><div class="item-name">G. Nuts (Fish)</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Matooke & Goat</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Matooke (Liver)</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Pilawo Beef</div><span class="item-price">UGX 12,000</span></div>
+    <div class="menu-item"><div class="item-name">Pilawo Chicken</div><span class="item-price">UGX 17,000</span></div>
+    <div class="menu-item"><div class="item-name">Pilawo Goat</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Veg. Rice Chicken</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Luwombo Chicken</div><span class="item-price">UGX 20,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">🍟</div><h3>Chips & Fast Food</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Chips (Plain)</div><span class="item-price">UGX 10,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips (Liver)</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips (Beef)</div><span class="item-price">UGX 20,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips (Goat)</div><span class="item-price">UGX 22,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips (Fish)</div><span class="item-price">UGX 45,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips Eggs</div><span class="item-price">UGX 12,000</span></div>
+    
+    <div class="menu-item"><div class="item-name">Chips Sausage</div><span class="item-price">UGX 13,000</span></div>
+    <div class="menu-item"><div class="item-name">Chips Fingers (Fish)</div><span class="item-price">UGX 35,000</span></div>
+    <div class="menu-item"><div class="item-name">Fish Fillet with Chips</div><span class="item-price">UGX 35,000</span></div>
+    <div class="menu-item"><div class="item-name">Goat Plain</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Liver Plain</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Chicken Plain</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Fish Plain</div><span class="item-price">UGX 40,000</span></div>
+
+    <div class="menu-item"><div class="item-name">Chaps</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Kebab</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Plain Sausage</div><span class="item-price">UGX 5,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">🍳</div><h3>Extras</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Plain Omelette</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Spanish Omelette</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Cheese Omelette</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Toast Bread</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Beef Burger & Salads</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Vegetable Burger</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Chicken Wings</div><span class="item-price">UGX 15,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">⚡</div><h3>In a Hurry</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Samosas (Beef)</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Chapati</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Mandazzi</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Egg Roll</div><span class="item-price">UGX 1,500</span></div>
+    <div class="menu-item"><div class="item-name">Rolex</div><span class="item-price">UGX 4,000</span></div>
+    <div class="menu-item"><div class="item-name">Omulet</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Katogo (Peas / G. Nuts)</div><span class="item-price">UGX 5,000</span></div>
+    <div class="menu-item"><div class="item-name">Katogo (Beef)</div><span class="item-price">UGX 7,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">☕</div><h3>Hot Beverages</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">African Tea</div><span class="item-price">UGX 5,000</span></div>
+    <div class="menu-item"><div class="item-name">Black Tea</div><span class="item-price">UGX 4,000</span></div>
+    <div class="menu-item"><div class="item-name">Black Coffee</div><span class="item-price">UGX 5,000</span></div>
+    <div class="menu-item"><div class="item-name">White Coffee</div><span class="item-price">UGX 7,000</span></div>
+    <div class="menu-item"><div class="item-name">English Toast & Chizzi</div><span class="item-price">UGX 8,500</span></div>
+  </div>
+
+  <div class="menu-category" id="#menu">
+    <div class="category-header"><div class="category-icon">🥤</div><h3>Soft Drinks</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Soda</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Mineral Water</div><span class="item-price">UGX 2,000</span></div>
+    <div class="menu-item"><div class="item-name">Juice</div><span class="item-price">UGX 5,000</span></div>
+    <div class="menu-item"><div class="item-name">Milkshake</div><span class="item-price">UGX 10,000</span></div>
+    <div class="menu-item"><div class="item-name">Oner</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Minute Maid</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Rockboom</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Predator</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Sting</div><span class="item-price">UGX 3,000</span></div>
+    <div class="menu-item"><div class="item-name">Red Bull</div><span class="item-price">UGX 10,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">🍷</div><h3 id="wines-menu">Wines</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Pure Heavens</div><span class="item-price">UGX 35,000</span></div>
+    <div class="menu-item"><div class="item-name">Four Cousins (Dry)</div><span class="item-price">UGX 60,000</span></div>
+    <div class="menu-item"><div class="item-name">Four Cousins (Sweet)</div><span class="item-price">UGX 55,000</span></div>
+    <div class="menu-item"><div class="item-name">Nederburg</div><span class="item-price">UGX 60,000</span></div>
+    <div class="menu-item"><div class="item-name">7 Hills</div><span class="item-price">UGX 55,000</span></div>
+    <div class="menu-item"><div class="item-name">4th Street</div><span class="item-price">UGX 55,000</span></div>
+  </div>
+
+  <div class="menu-category">
+    <div class="category-header"><div class="category-icon">🥃</div><h3>Spirits, Vodka & Gins</h3><div class="category-line"></div></div>
+    <div class="menu-item"><div class="item-name">Smirnoff Vodka (1/2)</div><span class="item-price">UGX 25,000</span></div>
+    <div class="menu-item"><div class="item-name">Smirnoff Vodka (1/4)</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Uganda Waragi Bottle</div><span class="item-price">UGX 40,000</span></div>
+    <div class="menu-item"><div class="item-name">Uganda Waragi (1/2)</div><span class="item-price">UGX 25,000</span></div>
+    <div class="menu-item"><div class="item-name">Uganda Waragi (1/4)</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Uganda Waragi Plastic</div><span class="item-price">UGX 8,000</span></div>
+    <div class="menu-item"><div class="item-name">Bond 7 Bottle (Ginger)</div><span class="item-price">UGX 55,000</span></div>
+    <div class="menu-item"><div class="item-name">Bond 7 Bottle</div><span class="item-price">UGX 40,000</span></div>
+    <div class="menu-item"><div class="item-name">Bond 7 (1/2)</div><span class="item-price">UGX 25,000</span></div>
+    <div class="menu-item"><div class="item-name">Bond 7 (1/4)</div><span class="item-price">UGX 15,000</span></div>
+    <div class="menu-item"><div class="item-name">Bond 7 Plastic</div><span class="item-price">UGX 8,000</span></div>
+    <div class="menu-item"><div class="item-name">V&A Bottle</div><span class="item-price">UGX 40,000</span></div>
+    <div class="menu-item"><div class="item-name">V&A (1/4)</div><span class="item-price">UGX 15,000</span></div>
+  </div>
+
+</div>
+
+<div class="banner">
+  <div class="gold-tag">✦ Special Events</div>
+  <h3>Catering for Your Big Day</h3>
+  <p>Weddings, birthdays, corporate meetings, private events. Custom menus on request.</p>
+  <a href="https://wa.me/256702530743?text=Hello%20I%20want%20to%20enquire%20about%20catering" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+  </a>
+</div>
+
+
+
+
+
+<script src="script-hamburger.js"></script>
+<script src="script-search.js"></script>
+<script>
+  const items = document.querySelectorAll('.menu-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 40);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  items.forEach(item => observer.observe(item));
+</script>
+<script src="script-search.js">
+  // ── SEARCH DATA (update these as your site grows) ──────────────────
+const SEARCH_DATA = [
+  // ROOMS
+  { cat: 'rooms', title: 'Standard Room', snippet: 'Comfortable single or double room with en-suite bathroom, TV, and fan.', badge: 'From UGX 80,000/night' },
+  { cat: 'rooms', title: 'Deluxe Room', snippet: 'Spacious room with air conditioning, king-size bed, and garden view.', badge: 'From UGX 150,000/night' },
+  { cat: 'rooms', title: 'Family Suite', snippet: 'Large suite with two bedrooms, ideal for families or groups.', badge: 'From UGX 220,000/night' },
+  { cat: 'rooms', title: 'Garden Chalet', snippet: 'Private chalet nestled in our green garden, perfect for a romantic stay.', badge: 'From UGX 180,000/night' },
+  { cat: 'rooms', title: 'Room Amenities', snippet: 'All rooms include free WiFi, hot water, mosquito nets, and daily housekeeping.' },
+  { cat: 'rooms', title: 'Check-in & Check-out', snippet: 'Check-in from 12:00 PM. Check-out by 11:00 AM. Early/late available on request.' },
+
+  // MENU — LOCAL FOOD
+  { cat: 'menu', title: 'Molokoni', snippet: 'Local dish served with your choice of side.', badge: 'UGX 10,000' },
+  { cat: 'menu', title: 'Fish', snippet: 'Fresh fish prepared in local style, served with sides.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Chicken', snippet: 'Tender chicken in rich local sauce, served with sides.', badge: 'UGX 17,000' },
+  { cat: 'menu', title: 'Beef', snippet: 'Slow-cooked beef with local sides.', badge: 'UGX 12,000' },
+  { cat: 'menu', title: 'Beans', snippet: 'Fresh garden beans cooked Ugandan style.', badge: 'UGX 6,000' },
+  { cat: 'menu', title: 'G. Nuts Fish', snippet: 'Fish cooked in rich groundnut sauce — a Ugandan classic.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Matooke & Goat', snippet: 'Steamed green banana with tender goat meat stew.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Matooke Liver', snippet: 'Steamed green banana served with seasoned liver.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Pilawo Beef', snippet: 'Spiced rice cooked with tender beef pieces.', badge: 'UGX 12,000' },
+  { cat: 'menu', title: 'Pilawo Chicken', snippet: 'Spiced rice cooked with juicy chicken.', badge: 'UGX 17,000' },
+  { cat: 'menu', title: 'Pilawo Goat', snippet: 'Spiced rice cooked with tender goat meat.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Veg Rice Chicken', snippet: 'Vegetable rice served with chicken.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Luwombo Chicken', snippet: 'Traditional Ugandan luwombo — chicken steamed in banana leaves.', badge: 'UGX 20,000' },
+  // MENU — CHIPS & FAST FOOD
+  { cat: 'menu', title: 'Chips Plain', snippet: 'Golden crispy plain chips.', badge: 'UGX 10,000' },
+  { cat: 'menu', title: 'Chips Liver', snippet: 'Crispy chips served with seasoned liver.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Chips Beef', snippet: 'Crispy chips served with tender beef.', badge: 'UGX 20,000' },
+  { cat: 'menu', title: 'Chips Goat', snippet: 'Crispy chips served with goat meat.', badge: 'UGX 22,000' },
+  { cat: 'menu', title: 'Chips Fish', snippet: 'Crispy chips served with whole fried fish.', badge: 'UGX 50,000' },
+  { cat: 'menu', title: 'Chips Eggs', snippet: 'Chips served with fried eggs.', badge: 'UGX 12,000' },
+
+  { cat: 'menu', title: 'Chips Sausage', snippet: 'Chips served with sausage.', badge: 'UGX 13,000' },
+  { cat: 'menu', title: 'Chips Fingers Fish', snippet: 'Fish fingers served with crispy chips.', badge: 'UGX 35,000' },
+  { cat: 'menu', title: 'Fish Fillet with Chips', snippet: 'Tender fish fillet with crispy chips.', badge: 'UGX 35,000' },
+  { cat: 'menu', title: 'Goat Plain', snippet: 'Plain goat meat, simply seasoned.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Liver Plain', snippet: 'Plain seasoned liver.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Chicken Plain', snippet: 'Plain lightly seasoned chicken.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Fish Plain', snippet: 'Plain fried fish.', badge: 'UGX 40,000' },
+  { cat: 'menu', title: 'Chaps', snippet: 'Quick chaps snack.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Kebab', snippet: 'Grilled kebab skewer — quick and tasty.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Plain Sausage', snippet: 'Grilled plain sausage.', badge: 'UGX 5,000' },
+  // MENU — EXTRAS
+  { cat: 'menu', title: 'Plain Omelette', snippet: 'Simple fluffy omelette.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Spanish Omelette', snippet: 'Omelette with veggies and seasoning.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Cheese Omelette', snippet: 'Omelette loaded with melted cheese.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Toast Bread', snippet: 'Toasted bread — great with tea or coffee.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Beef Burger & Salads', snippet: 'Beef burger served with fresh salad.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Vegetable Burger', snippet: 'Veggie burger — a great meat-free option.', badge: 'UGX 15,000' },
+  { cat: 'menu', title: 'Chicken Wings', snippet: 'Juicy seasoned chicken wings.', badge: 'UGX 15,000' },
+  // MENU — IN A HURRY
+  { cat: 'menu', title: 'Samosas Beef', snippet: 'Crispy beef-filled samosas — perfect snack.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Chapati', snippet: 'Soft Ugandan chapati — great with tea.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Mandazzi', snippet: 'Soft fried mandazzi doughnuts.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Egg Roll', snippet: 'Egg wrapped in a thin roll — quick and filling.', badge: 'UGX 1,500' },
+  { cat: 'menu', title: 'Rolex', snippet: 'Ugandan-style rolex — eggs and chapati rolled together.', badge: 'UGX 4,000' },
+  { cat: 'menu', title: 'Omulet', snippet: 'Quick omulet snack.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Katogo Peas G Nuts', snippet: 'Matooke cooked with peas or groundnuts — local breakfast favourite.', badge: 'UGX 5,000' },
+  { cat: 'menu', title: 'Katogo Beef', snippet: 'Matooke cooked with beef — hearty and filling.', badge: 'UGX 7,000' },
+  // MENU — HOT BEVERAGES
+  { cat: 'menu', title: 'African Tea', snippet: 'Hot Ugandan spiced chai tea.', badge: 'UGX 5,000' },
+  { cat: 'menu', title: 'Black Tea', snippet: 'Classic hot black tea.', badge: 'UGX 4,000' },
+  { cat: 'menu', title: 'Black Coffee', snippet: 'Strong brewed black coffee.', badge: 'UGX 5,000' },
+  { cat: 'menu', title: 'White Coffee', snippet: 'Coffee served with milk.', badge: 'UGX 7,000' },
+  { cat: 'menu', title: 'English Toast & Chizzi', snippet: 'English toast with chizzi — great breakfast combo.', badge: 'UGX 8,500' },
+  // MENU — SOFT DRINKS
+  { cat: 'menu', title: 'Soda', snippet: 'Chilled sodas — Coke, Fanta, Sprite, Stoney and more.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Mineral Water', snippet: 'Chilled mineral water.', badge: 'UGX 2,000' },
+  { cat: 'menu', title: 'Juice', snippet: 'Fresh or bottled fruit juice.', badge: 'UGX 5,000' },
+  { cat: 'menu', title: 'Milkshake', snippet: 'Creamy blended milkshake.', badge: 'UGX 10,000' },
+  { cat: 'menu', title: 'Oner', snippet: 'Oner energy drink.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Minute Maid', snippet: 'Minute Maid fruit drink.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Rockboom', snippet: 'Rockboom energy drink.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Predator', snippet: 'Predator energy drink.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Sting', snippet: 'Sting energy drink.', badge: 'UGX 3,000' },
+  { cat: 'menu', title: 'Red Bull', snippet: 'Red Bull energy drink.', badge: 'UGX 10,000' },
+  // MENU — WINES
+  { cat: 'menu', title: 'Pure Heavens Wine', snippet: 'Pure Heavens wine — smooth and affordable.', badge: 'UGX 35,000' },
+  { cat: 'menu', title: 'Four Cousins Dry', snippet: 'Four Cousins dry wine.', badge: 'UGX 60,000' },
+  { cat: 'menu', title: 'Four Cousins Sweet', snippet: 'Four Cousins sweet wine.', badge: 'UGX 55,000' },
+  { cat: 'menu', title: 'Nederburg Wine', snippet: 'Nederburg — a premium South African wine.', badge: 'UGX 60,000' },
+  { cat: 'menu', title: '7 Hills Wine', snippet: '7 Hills wine selection.', badge: 'UGX 55,000' },
+  { cat: 'menu', title: '4th Street Wine', snippet: '4th Street wine.', badge: 'UGX 55,000' },
+  // MENU — SPIRITS
+  { cat: 'menu', title: 'Smirnoff Vodka', snippet: 'Smirnoff Vodka — available in 1/2 or 1/4 bottle.', badge: 'From UGX 15,000' },
+  { cat: 'menu', title: 'Uganda Waragi', snippet: 'Uganda Waragi — bottle, 1/2, 1/4, or plastic.', badge: 'From UGX 8,000' },
+  { cat: 'menu', title: 'Bond 7', snippet: 'Bond 7 whisky — bottle, 1/2, 1/4, plastic, or ginger variant.', badge: 'From UGX 8,000' },
+  { cat: 'menu', title: 'V&A Spirit', snippet: 'V&A spirit — available in bottle or 1/4.', badge: 'From UGX 15,000' },
+  { cat: 'menu', title: 'Special Events Catering', snippet: 'Full catering packages for weddings, parties, and corporate events. Contact us on WhatsApp.' },
+
+  // BILLING
+  { cat: 'billing', title: 'Mobile Money Payment', snippet: 'Pay via MTN Mobile Money or Airtel Money. Ask reception for our number.', badge: 'Accepted' },
+  { cat: 'billing', title: 'Cash Payment', snippet: 'We accept Uganda Shillings (UGX) cash at the front desk.', badge: 'Accepted' },
+  { cat: 'billing', title: 'Bank Transfer', snippet: 'Bank transfers accepted for large bookings. Contact us for account details.', badge: 'On Request' },
+  { cat: 'billing', title: 'Deposits & Booking', snippet: 'A 30% deposit is required to confirm event or group bookings.', badge: '30% Deposit' },
+  { cat: 'billing', title: 'Invoices & Receipts', snippet: 'Printed and digital receipts provided for all payments on request.' },
+  { cat: 'billing', title: 'WhatsApp Booking', snippet: 'Book and confirm your stay via WhatsApp. We accept deposit confirmations by screenshot.' },
+
+  // GENERAL
+  { cat: 'general', title: 'Garden & Grounds', snippet: 'Our lush garden is open to guests for relaxation, picnics, and outdoor events.', badge: 'Open Daily' },
+  { cat: 'general', title: 'Restaurant Hours', snippet: 'Restaurant open 7 AM – 10 PM. Last food orders at 9:30 PM.', badge: '7AM–10PM' },
+  { cat: 'general', title: 'Bar Hours', snippet: 'Bar open from 11 AM to midnight. Weekends until 1 AM.', badge: '11AM–12AM' },
+  { cat: 'general', title: 'Events & Conferences', snippet: 'We host weddings, birthdays, corporate meetings, and private parties.', badge: 'Book Us' },
+  { cat: 'general', title: 'WiFi Access', snippet: 'Free WiFi available throughout the hotel and garden. Password at reception.', badge: 'Free' },
+  { cat: 'general', title: 'Location', snippet: 'Located in Wakiso, easily accessible from Kampala. Free parking available on site.' },
+];
+
+const CAT_ICONS = { rooms:'🛏', menu:'🍽', billing:'💳', general:'🌿' };
+
+// ── SEARCH STATE ──────────────────────────────────────────────────
+let srQuery = '';
+let srCat   = 'all';
+
+// ── DOM ───────────────────────────────────────────────────────────
+const overlay    = document.getElementById('searchOverlay');
+const srInput    = document.getElementById('searchInput');
+const srClear    = document.getElementById('searchClear');
+const srTabs     = document.getElementById('searchTabs');
+const srResults  = document.getElementById('searchResults');
+const srMeta     = document.getElementById('searchMeta');
+const srEmpty    = document.getElementById('searchEmpty');
+const srInitial  = document.getElementById('searchInitial');
+
+document.getElementById('search-trigger').addEventListener('click', openSearch);
+document.getElementById('searchClose').addEventListener('click', closeSearch);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+
+function openSearch() {
+  overlay.classList.add('open');
+  srInput.focus();
+}
+function closeSearch() {
+  overlay.classList.remove('open');
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────
+function escH(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function hl(text, q) {
+  if (!q) return text;
+  return text.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'), '<mark>$1</mark>');
+}
+function fillSearch(text) {
+  srInput.value = text;
+  srQuery = text;
+  renderSearch();
+  srInput.focus();
+}
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderSearch() {
+  const q = srQuery.trim().toLowerCase();
+  srClear.classList.toggle('visible', q.length > 0);
+  srInitial.style.display = q ? 'none' : 'block';
+  srTabs.style.display    = q ? 'flex'  : 'none';
+  srEmpty.classList.remove('visible');
+  srResults.innerHTML = '';
+  srMeta.innerHTML    = '';
+
+  if (!q) return;
+
+  const all = SEARCH_DATA.filter(d =>
+    (d.title + ' ' + d.snippet).toLowerCase().includes(q)
+  );
+
+  // Counts
+  const cats = ['rooms','menu','billing','general'];
+  document.getElementById('cnt-all').textContent = all.length;
+  cats.forEach(c => {
+    const el = document.getElementById('cnt-' + c);
+    if (el) el.textContent = all.filter(r => r.cat === c).length;
+  });
+
+  const filtered = srCat === 'all' ? all : all.filter(r => r.cat === srCat);
+
+  if (!filtered.length) {
+    srEmpty.classList.add('visible');
+    return;
+  }
+
+  srMeta.innerHTML = `<strong>${filtered.length}</strong> result${filtered.length !== 1 ? 's' : ''} for "<strong>${escH(q)}</strong>"`;
+
+  filtered.forEach((item, i) => {
+    const card = document.createElement('div');
+    card.className = 'result-card';
+    card.style.animationDelay = (i * 0.04) + 's';
+    card.innerHTML = `
+      <div class="r-icon ${item.cat}">${CAT_ICONS[item.cat]}</div>
+      <div class="r-body">
+        <div class="r-cat">${item.cat}</div>
+        <div class="r-title">${hl(escH(item.title), q)}</div>
+        <div class="r-snippet">${hl(escH(item.snippet), q)}</div>
+      </div>
+      ${item.badge ? `<span class="r-badge badge-${item.cat}">${escH(item.badge)}</span>` : ''}
+    `;
+    srResults.appendChild(card);
+  });
+}
+
+// ── EVENTS ────────────────────────────────────────────────────────
+srInput.addEventListener('input', () => { srQuery = srInput.value; renderSearch(); });
+srInput.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+srClear.addEventListener('click', () => { srInput.value = ''; srQuery = ''; renderSearch(); srInput.focus(); });
+
+document.querySelectorAll('.stab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    srCat = tab.dataset.cat;
+    document.querySelectorAll('.stab').forEach(t => t.classList.toggle('active', t === tab));
+    renderSearch();
+  });
+});
+
+
+
+window.addEventListener('scroll', () => {
+  elements.forEach(el => {
+    const position = el.getBoundingClientRect().top;
+    const screenHeight = window.innerHeight;
+
+    if (position < screenHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+});
+</script>
+
+<!-- FOOTER -->
+<section id="footer">
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-heading">For More Information</p>
+
+    <div class="footer-grid">
+
+      <!-- Left: Phone numbers & merchant codes -->
+      <div class="contact-block">
+        <div class="section-label">Contact Us</div>
+
+        <div class="phone-row">
+          <div class="phone-icon">
+            <!-- Phone wave icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+            </svg>
+          </div>
+          <div class="phone-numbers">
+            <span class="phone-num">+256 782 530 743</span>
+            <span class="phone-num">+246 701 530 743</span>
+            <span class="phone-num">+256 709 214 762 <span class="phone-tag">Landline</span></span>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-top:20px;">Merchant Codes</div>
+        <div class="merchant-row">
+          <div class="merchant-pill">
+            <span class="merchant-network">MTN</span>
+            <span class="merchant-code">506127</span>
+          </div>
+          <div class="merchant-pill">
+            <span class="merchant-network">Airtel</span>
+            <span class="merchant-code">653841</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vertical divider -->
+      <div class="divider-line"></div>
+
+      <!-- Right: Location -->
+      <div class="location-block">
+        <div class="section-label">Our Location</div>
+        <div class="location-body">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
+
+          <div class="location-text">
+            <span class="location-line"><strong>Wakiso</strong>, Near Kisimbiri C.O.U</span>
+            <span class="location-line">Primary School</span>
+            <span class="location-line">Off <strong>Kikookiro Road</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 &nbsp;·&nbsp; All Rights Reserved
+          <p>© 2026 MKz Gardens & Hotel Wakiso &nbsp;·&nbsp; <a href="index.html">Back to Home</a></p>
+    </div>
+
+  </div>
+</footer>
+</section>
+
+</body>
+</html>
