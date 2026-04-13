@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Book a room at MKz Gardens & Hotel Wakiso. Standard and Deluxe rooms available. Book via WhatsApp instantly.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Book a Room — MKz Gardens & Hotel Wakiso">
+  <meta property="og:description" content="Reserve your room at MKz Gardens & Hotel. Instant WhatsApp booking.">
+  <title>Book a Room — MKz Gardens & Hotel Wakiso</title>
+  
+    <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="style-hamburger.css">
+  <link rel="stylesheet" href="style-search.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #0f3d2e;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --dark: #080d12;
+      --dark2: #0f1820;
+      --dark3: #162030;
+      --white: #f0ece3;
+      --muted: rgba(240,236,227,0.45);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #1a0033, #000);
+      border: 2px solid green;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { font-family: 'Cinzel', serif; font-size: 14px; color: var(--gold); }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 52px 20px 36px;
+      position: relative;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+    }
+    .page-eyebrow {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .page-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .page-header h1 em { font-style: italic; color: var(--gold); }
+    .page-header p {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 340px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ROOM PICKER */
+    .room-picker {
+      padding: 0 16px 32px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .picker-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .room-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .room-card {
+      background: var(--dark3);
+      border: 2px solid rgba(201,168,76,0.15);
+      border-radius: 16px;
+      padding: 18px 14px;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s, transform 0.2s;
+      text-align: center;
+      user-select: none;
+    }
+    .room-card:hover { transform: translateY(-2px); border-color: rgba(201,168,76,0.4); }
+    .room-card.selected {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.08);
+    }
+    .room-card.selected .room-check { opacity: 1; }
+    .room-ico { font-size: 26px; margin-bottom: 8px; }
+    .room-name {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .room-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .room-check {
+      opacity: 0;
+      font-size: 13px;
+      color: #4ade80;
+      margin-top: 10px;
+      transition: opacity 0.3s;
+    }
+
+    /* FORM */
+    .booking-form-wrap {
+      padding: 0 16px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,0.2);
+    }
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--dark3);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s, background 0.3s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+    .field input[type="date"] { color-scheme: dark; }
+    .field select option { background: #162030; }
+    .field textarea { resize: none; height: 90px; line-height: 1.6; }
+
+    .date-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .guests-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* nights badge */
+    .nights-wrap { text-align: center; margin: 2px 0 12px; }
+    .nights-badge {
+      display: none;
+      font-size: 12px;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      border-radius: 20px;
+      padding: 6px 18px;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .nights-badge.show { display: inline-block; }
+
+    /* SUBMIT */
+    .submit-wrap {
+      padding: 24px 16px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #1faf5c, #25d366);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 18px 24px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: opacity 0.3s, transform 0.2s;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.25);
+    }
+    .btn-whatsapp:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn-whatsapp:active { transform: scale(0.98); }
+    .btn-whatsapp i { font-size: 18px; }
+
+    .form-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* GOLD DIVIDER */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,0.3), transparent);
+      margin: 32px auto;
+      max-width: 600px;
+    }
+
+    /* INFO STRIP */
+    .info-strip {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 16px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .info-pill {
+      background: var(--dark3);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .info-pill i { color: var(--gold); font-size: 11px; }
+
+    /* FADE UP */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <p class="logo">MKz Gardens & Hotel</p>
+  <i class="fas fa-search" id="search-trigger" title="Search"></i>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay"></div><div class="menu" id="menu">
+  <a href="index.html">About us</a>
+  <a href="booking.html">Our Rooms</a>
+  <a href="restaurant.html">Restaurant</a>
+  <a href="sauna.html">Wellness</a>
+  
+<!---=====DROP DOWN=====----->
+<div class="info-card">
+  <div class="info-card-header" onclick="toggleCard(this)">
+    <span>🌿 Quick Links</span>
+    <span class="info-card-arrow">▼</span>
+  </div>
+  <div class="info-card-body">
+<ul>
+<a href="booking.html#page-header fade-up"><p>Booking Form</p></a>
+<a href="restaurant.html#menu-section"><p>Menu</p></a>
+<a href="restaurant.html#wines-menu"><p>Bar </p></a>
+<a href="index.html#mkz-gallery"><p>️Gallery</p></a>
+<a href="Booking.html#direction-maps"><p>Online Direction 🗺️</p></a>
+
+
+      
+</ul>
+</div>
+  
+  </div>
+  <script>
+  //--------dropdown-----========
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+</script>
+</div>
+
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-top">
+      <div class="search-input-wrap">
+        <i class="fas fa-search search-input-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search rooms, menu, billing…" autocomplete="off"/>
+        <button id="searchClear" class="search-clear-btn">✕</button>
+      </div>
+      <button class="search-close-btn" id="searchClose">Close</button>
+    </div>
+    <div class="search-tabs" id="searchTabs" style="display:none">
+      <button class="stab active" data-cat="all">All <span id="cnt-all">0</span></button>
+      <button class="stab" data-cat="rooms">🛏 Rooms <span id="cnt-rooms">0</span></button>
+      <button class="stab" data-cat="menu">🍽 Menu <span id="cnt-menu">0</span></button>
+      <button class="stab" data-cat="billing">💳 Billing <span id="cnt-billing">0</span></button>
+      <button class="stab" data-cat="general">🌿 General <span id="cnt-general">0</span></button>
+    </div>
+    <div class="search-meta" id="searchMeta"></div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-empty" id="searchEmpty">
+      <div style="font-size:2rem">🔍</div>
+      <p>No results found.</p>
+    </div>
+    <div class="search-initial" id="searchInitial">
+      <p>Try searching for:</p>
+      <div class="search-hints">
+        <span class="hint" onclick="fillSearch('standard room')">Standard Room</span>
+        <span class="hint" onclick="fillSearch('deluxe')">Deluxe</span>
+        <span class="hint" onclick="fillSearch('wifi')">WiFi</span>
+        <span class="hint" onclick="fillSearch('check out')">Check-out</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header fade-up" id="page-header fade-up">
+  <div class="page-eyebrow">Reserve Your Stay</div>
+  <h1>Book a <em>Room</em></h1>
+  <p>Fill in your details and we'll confirm your booking instantly on WhatsApp.</p>
+</div>
+
+<!-- ROOM PICKER -->
+<div class="room-picker fade-up">
+  <div class="picker-label">Choose Your Room</div>
+  <div class="room-cards">
+
+    <div class="room-card selected" data-room="Standard Room" onclick="selectRoom(this)">
+      <div class="room-ico">🛏</div>
+      <div class="room-name">Standard Room</div>
+      <div class="room-desc">Clean & comfortable. DSTv, Wi-Fi, en-suite bathroom.</div>
+      <div class="room-check">✓ Selected</div>
+    </div>
+
+    <div class="room-card" data-room="Deluxe Room" onclick="selectRoom(this)">
+      <div class="room-ico">👑</div>
+      <div class="room-name">Deluxe Room</div>
+      <div class="room-desc">Spacious & elegant. Premium furnishings, garden view.</div>
+      <div class="room-check">✓ Selected</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="gold-divider"></div>
+
+<!-- FORM -->
+<div class="booking-form-wrap fade-up">
+
+  <div class="form-section-label">Your Details</div>
+
+  <div class="field">
+    <label for="fname">Full Name</label>
+    <input type="text" id="fname" placeholder="e.g. Aisha Nakato" required>
+  </div>
+
+  <div class="field">
+    <label for="fphone">Phone Number</label>
+    <input type="tel" id="fphone" placeholder="e.g. 0701 234 567" required>
+  </div>
+
+  <div class="field">
+    <label for="femail">Email <span style="opacity:0.4;font-size:10px">(optional)</span></label>
+    <input type="email" id="femail" placeholder="your@email.com">
+  </div>
+
+  <div class="form-section-label">Your Stay</div>
+
+  <div class="date-row">
+    <div class="field">
+      <label for="checkin">Check-in</label>
+      <input type="date" id="checkin" required>
+    </div>
+    <div class="field">
+      <label for="checkout">Check-out</label>
+      <input type="date" id="checkout" required>
+    </div>
+  </div>
+
+  <div class="nights-wrap">
+    <span class="nights-badge" id="nightsBadge"></span>
+  </div>
+
+  <div class="guests-row">
+    <div class="field">
+      <label for="adults">Adults</label>
+      <select id="adults">
+        <option value="1">1 Adult</option>
+        <option value="2" selected>2 Adults</option>
+        <option value="3">3 Adults</option>
+        <option value="4">4 Adults</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="children">Children</label>
+      <select id="children">
+        <option value="0" selected>No Children</option>
+        <option value="1">1 Child</option>
+        <option value="2">2 Children</option>
+        <option value="3">3 Children</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="notes">Special Requests <span style="opacity:0.4;font-size:10px">(optional)</span></label>
+    <textarea id="notes" placeholder="e.g. early check-in, quiet room, anniversary setup…"></textarea>
+  </div>
+
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-wrap fade-up">
+  <button class="btn-whatsapp" onclick="sendBooking()">
+    <i class="fab fa-whatsapp"></i>
+    Send Booking on WhatsApp
+  </button>
+  <p class="form-note">
+    Tapping sends your details to WhatsApp ready to go.<br>
+    We confirm within a few minutes. 🌿
+  </p>
+</div>
+
+<!-- INFO STRIP -->
+<div class="info-strip fade-up">
+  <div class="info-pill"><i class="fas fa-clock"></i> Check-in: 12:00 PM</div>
+  <div class="info-pill"><i class="fas fa-sign-out-alt"></i> Check-out: 11:00 AM</div>
+  <div class="info-pill"><i class="fas fa-wifi"></i> Free Wi-Fi</div>
+  <div class="info-pill"><i class="fas fa-tv"></i> DSTv Included</div>
+  <div class="info-pill"><i class="fas fa-map-marker-alt"></i> Wakiso, Uganda</div>
+</div>
+
+<script src="script-hamburger.js"></script>
+<script src="script-search.js"></script>
+
+<script>
+  // ROOM SELECTION
+  let selectedRoom = 'Standard Room';
+  function selectRoom(card) {
+    document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    selectedRoom = card.dataset.room;
+  }
+
+  // NIGHTS COUNTER
+  const checkinEl  = document.getElementById('checkin');
+  const checkoutEl = document.getElementById('checkout');
+  const badge      = document.getElementById('nightsBadge');
+
+  const today = new Date().toISOString().split('T')[0];
+  checkinEl.min = today;
+  checkoutEl.min = today;
+
+  function updateNights() {
+    const ci = new Date(checkinEl.value);
+    const co = new Date(checkoutEl.value);
+    if (checkinEl.value && checkoutEl.value && co > ci) {
+      const nights = Math.round((co - ci) / (1000 * 60 * 60 * 24));
+      badge.textContent = `🌙 ${nights} night${nights > 1 ? 's' : ''}`;
+      badge.classList.add('show');
+    } else {
+      badge.classList.remove('show');
+    }
+  }
+  checkinEl.addEventListener('change', () => { checkoutEl.min = checkinEl.value; updateNights(); });
+  checkoutEl.addEventListener('change', updateNights);
+
+  // SEND BOOKING
+  function sendBooking() {
+    const name     = document.getElementById('fname').value.trim();
+    const phone    = document.getElementById('fphone').value.trim();
+    const email    = document.getElementById('femail').value.trim();
+    const checkin  = checkinEl.value;
+    const checkout = checkoutEl.value;
+    const adults   = document.getElementById('adults').value;
+    const children = document.getElementById('children').value;
+    const notes    = document.getElementById('notes').value.trim();
+
+    if (!name)     { alert('Please enter your full name.'); return; }
+    if (!phone)    { alert('Please enter your phone number.'); return; }
+    if (!checkin)  { alert('Please select a check-in date.'); return; }
+    if (!checkout) { alert('Please select a check-out date.'); return; }
+    if (new Date(checkout) <= new Date(checkin)) {
+      alert('Check-out must be after check-in.'); return;
+    }
+
+    const nights = Math.round((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+
+    let msg =
+`Hello MKz Gardens & Hotel 🌿
+
+I would like to book a room:
+
+🛏 Room: ${selectedRoom}
+👤 Name: ${name}
+📞 Phone: ${phone}${email ? `\n📧 Email: ${email}` : ''}
+📅 Check-in: ${checkin}
+📅 Check-out: ${checkout}
+🌙 Nights: ${nights}
+👥 Guests: ${adults} adult${adults > 1 ? 's' : ''}${children > 0 ? `, ${children} child${children > 1 ? 'ren' : ''}` : ''}${notes ? `\n\n📝 Requests: ${notes}` : ''}
+
+Please confirm availability. Thank you!`;
+
+    window.location.href = `https://wa.me/256701114363?text=${encodeURIComponent(msg)}`;
+  }
+
+  // SCROLL ANIMATIONS
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+
+<iframe id="direction-maps" width="400" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=400&amp;height=400&amp;hl=en&amp;q=MKz%20gardens%20&amp;%20Hotel%20Wakiso%20wakiso%20+(mkz%20gardens%20hotel%20)&amp;t=k&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> <a href='https://www.privat-krankenversicherung-vergleich.at/'>Krankenversicherung Ö</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=366fab350fab3b4d24bafefac32c3129ab3a06ba'></script>
+
+
+</body>
+<!-- FOOTER -->
+<section id="footer">
+<footer>
+  <div class="footer-inner">
+
+    <p class="footer-heading">For More Information</p>
+    
+<div class="footer-grid">
+   <div class="section-label">Follow Our Socials</div>
+   
+   
+   <a href="https://www.tiktok.com/@mkzgardens0" target="_blank">
+     <img src="tiktok.png" width="54px" style="border-radius:50%;">
+</a>
+
+  </div>
+
+    <div class="footer-grid">
+
+      <!-- Left: Phone numbers & merchant codes -->
+      <div class="contact-block">
+        <div class="section-label">Contact Us</div>
+
+        <div class="phone-row">
+          <div class="phone-icon">
+            <!-- Phone wave icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+            </svg>
+          </div>
+          <div class="phone-numbers">
+            <span class="phone-num">+256 782 530 743</span>
+            <span class="phone-num">+246 701 530 743</span>
+            <span class="phone-num">+256 709 214 762 <span class="phone-tag">Landline</span></span>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-top:20px;">Merchant Codes</div>
+        <div class="merchant-row">
+          <div class="merchant-pill">
+            <span class="merchant-network">MTN</span>
+            <span class="merchant-code">506127</span>
+          </div>
+          <div class="merchant-pill">
+            <span class="merchant-network">Airtel</span>
+            <span class="merchant-code">653841</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vertical divider -->
+      <div class="divider-line"></div>
+
+      <!-- Right: Location -->
+      <div class="location-block">
+        <div class="section-label">Our Location</div>
+        <div class="location-body">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
+          <div class="location-text">
+            <span class="location-line"><strong>Wakiso</strong>, Near Kisimbiri C.O.U</span>
+            <span class="location-line">Primary School</span>
+            <span class="location-line">Off <strong>Kikookiro Road</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom" id="Contact">
+        <p>© 2026 MKz Gardens & Hotel Wakiso &nbsp;·&nbsp; </p>
+      All Rights Reserved
+      <p>Designed by: <a style="color:var(--gold)" href="tel:356701115463">Edrine</a></p>
+    </div>
+
+  </div>
+</footer>
+</section>
+</html>
