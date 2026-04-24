@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+  <!-- ── SEO ── -->
+  <meta name="description" content="MKz Gardens & Hotel Wakiso — Hotel accommodation, restaurant, bar, sauna, aerobics, beautiful gardens for events, and live band every Saturday. Located in Wakiso, Uganda.">
+  <meta name="keywords" content="MKz Gardens, MKz Hotel, hotel Wakiso, accommodation Wakiso, restaurant Wakiso, bar Wakiso, sauna Wakiso, aerobics Wakiso, gardens events Wakiso, live band Wakiso, Uganda hotel, Wakiso Uganda, event venue Wakiso">
+  <meta name="author" content="MKz Gardens & Hotel Wakiso">
+  <meta name="robots" content="index, follow">
+
+  <!-- ── Canonical — tells Google this is the main version ── -->
+  <link rel="canonical" href="https://mkzgardens.github.io/index.html">
+
+  <!-- ── Open Graph — WhatsApp / Facebook share preview ── -->
+  <meta property="og:title" content="MKz Gardens & Hotel Wakiso">
+  <meta property="og:description" content="Hotel accommodation, restaurant, bar, sauna, aerobics, gardens for events and live band every Saturday in Wakiso, Uganda.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_UG">
+  <meta property="og:url" content="https://mkzgardens.github.io/">
+  <!-- Replace mkz-preview.jpg with any good photo of the hotel (1200x630px ideal) -->
+  <meta property="og:image" content="https://mkzgardens.github.io/mkz-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MKz Gardens & Hotel Wakiso — Gardens, Restaurant and Accommodation">
+
+  <!-- ── Schema.org — tells Google this is a Hotel with address, phone, hours ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "name": "MKz Gardens & Hotel Wakiso",
+    "description": "Hotel accommodation, restaurant, bar, sauna, aerobics and event gardens in Wakiso, Uganda.",
+    "url": "https://mkzgardens.github.io/",
+    "image": "https://mkzgardens.github.io/mkz-preview.jpg",
+    "telephone": ["+256782530743", "+256701530743", "+256709214762"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Off Kikookiro Road, Near Kisimbiri C.O.U Primary School",
+      "addressLocality": "Wakiso",
+      "addressCountry": "UG"
+    },
+    "openingHours": "Mo-Su 07:00-22:00",
+    "servesCuisine": "Ugandan, International",
+    "amenityFeature": [
+      {"@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Sauna", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Restaurant", "value": true},
+      {"@type": "LocationFeatureSpecification", "name": "Bar", "value": true}
+    ],
+    "priceRange": "UGX",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "addressCountry": "UG",
+      "addressRegion": "Wakiso"
+    }
+  }
+  </script>
+
+  <title>MKz Gardens & Hotel Wakiso — Accommodation, Restaurant & Events</title>
+
+  <!-- ── Stylesheets ── -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-search.css">
+  <link rel="stylesheet" href="style-hamburger.css">
+
+  <!-- ── Fonts — merged into ONE request ── -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+
+  <!-- ── Icons ── -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css" crossorigin="anonymous">
+
+<body>
+<!---=== Nav====--->
+<nav class="nav">
+  <p class="logo">MKz Gardens & Hotel</p>
+  <i class="fas fa-search" id="search-trigger" title="Search"></i>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="menu" id="menu">
+  <a href="index.html">About us</a>
+  <a href="booking.html">Our Rooms</a>
+  <a href="restaurant.html">Restaurant</a>
+  <a href="sauna.html">Wellness</a>
+  
+<!---=====DROP DOWN=====----->
+<div class="info-card">
+  <div class="info-card-header" onclick="toggleCard(this)">
+    <span>🌿 Quick Links</span>
+    <span class="info-card-arrow">▼</span>
+  </div>
+  <div class="info-card-body">
+<ul>
+<a href="booking.html#page-header fade-up"><p>Booking Form</p></a>
+<a href="restaurant.html#menu-section"><p>Menu</p></a>
+<a href="restaurant.html#wines-menu"><p>Bar </p></a>
+<a href="index.html#mkz-gallery"><p>️Gallery</p></a>
+<a href="Booking.html#direction-maps"><p>Online Direction 🗺️</p></a>
+
+
+      
+</ul>
+</div>
+  
+  </div>
+  <script>
+  //--------dropdown-----========
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+</script>
+</div>
+  
+  
+  
+  
+  
+
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-modal">
+    <div class="search-top">
+      <div class="search-input-wrap">
+        <i class="fas fa-search search-input-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search rooms, menu, billing…" autocomplete="off"/>
+        <button id="searchClear" class="search-clear-btn">✕</button>
+      </div>
+      <button class="search-close-btn" id="searchClose">Close</button>
+    </div>
+
+    <div class="search-tabs" id="searchTabs" style="display:none">
+      <button class="stab active" data-cat="all">All <span id="cnt-all">0</span></button>
+      <button class="stab" data-cat="rooms">🛏 Rooms <span id="cnt-rooms">0</span></button>
+      <button class="stab" data-cat="menu">🍽 Menu <span id="cnt-menu">0</span></button>
+      <button class="stab" data-cat="billing">💳 Billing <span id="cnt-billing">0</span></button>
+      <button class="stab" data-cat="general">🌿 General <span id="cnt-general">0</span></button>
+    </div>
+
+    <div class="search-meta" id="searchMeta"></div>
+    <div class="search-results" id="searchResults"></div>
+
+    <div class="search-empty" id="searchEmpty">
+      <div style="font-size:2rem">🔍</div>
+      <p>No results found. Try different keywords.</p>
+    </div>
+
+    <div class="search-initial" id="searchInitial">
+      <p>Try searching for:</p>
+      <div class="search-hints">
+        <span class="hint" onclick="fillSearch('standard room')">Standard Room</span>
+        <span class="hint" onclick="fillSearch('buffet')">Buffet</span>
+        <span class="hint" onclick="fillSearch('wifi')">WiFi</span>
+        <span class="hint" onclick="fillSearch('mobile money')">Mobile Money</span>
+        <span class="hint" onclick="fillSearch('garden')">Garden</span>
+        <span class="hint" onclick="fillSearch('check out')">Check-out</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="slides">
+    <img src="bar-outside.JPG" class="slide" />
+    <img src="receptionist.jpg" class="slide" />
+    <img src="mkz-garden.jpg" class="slide" />
+  </div>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Welcome to MKz</p>
+    <h1 class="hero-split">Service with Dignity</h1>
+    <p class="hero-sub">Experience Comfort &amp; Elegance</p>
+    <a href="booking.html" class="btn btn-animated">Book Now</a>
+  </div>
+</section>
+
+<script>
+  let slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (i === index) slide.classList.add('active');
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  showSlide(current);
+  setInterval(nextSlide, 4000);
+</script>
+
+<hr style="border-color:rgba(201,168,76,0.15); margin:0">
+<!-- ===== SERVICES OVERVIEW ===== -->
+<section class="services-section fade-up">
+  <div class="section-eyebrow">What We Offer</div>
+  <h2 class="section-title-text">Everything You Need</h2>
+  <div class="services-grid">
+
+    <a href="showroom.html" class="service-card stagger" style="--i:0">
+      <div class="service-img-wrap">
+        <img src="corridors-room.JPG" loading="lazy" alt="Accommodation" />
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🛏</div>
+        <h3>Accommodation</h3>
+        <p>Comfortable Standard & Deluxe rooms with clean linen, DSTv and Wi-Fi.</p>
+        <span class="service-link">View Rooms →</span>
+      </div>
+    </a>
+
+    <a href="restaurant.html" class="service-card stagger" style="--i:1">
+      <div class="service-img-wrap">
+        <img src="beef-burger.jpeg" loading="lazy" alt="Restaurant" />
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🍽</div>
+        <h3>Restaurant</h3>
+        <p>Ugandan classics, grills, fast food and full breakfast. Open 7 AM – 10 PM.</p>
+        <span class="service-link">See Menu →</span>
+      </div>
+    </a>
+
+    <a href="restaurant.html#wines-menu" class="service-card stagger" style="--i:2">
+      <div class="service-img-wrap">
+        <img src="bar-outside.JPG" loading="lazy" alt="Bar" />
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🍹</div>
+        <h3>Bar</h3>
+        <p>Wines, spirits, cold beers and cocktails. Live band every Saturday night.</p>
+        <span class="service-link">See Bar Stock →</span>
+      </div>
+    </a>
+
+    <a href="sauna.html" class="service-card stagger" style="--i:3">
+      <div class="service-img-wrap">
+        <img src="sauna.jpg" loading="lazy" alt="Sauna" />
+      </div>
+      <div class="service-body">
+        <div class="service-icon">🧖</div>
+        <h3>Sauna & Massage</h3>
+        <p>Relax and unwind with our professional sauna and massage services.</p>
+        <span class="service-link">Learn More →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ===== MORE SERVICES ===== -->
+<section class="more-services-section fade-up">
+  <div class="section-eyebrow">There's More</div>
+  <h2 class="section-title-text">More Services</h2>
+  <div class="services-list-grid">
+
+    <div class="svc-item">
+      <span class="svc-ico">🌿</span>
+      <div>
+        <strong>Gardens for Events</strong>
+        <p>Weddings, introductions, birthdays, corporate events & social gatherings.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">🎤</span>
+      <div>
+        <strong>Public Address System for Hire</strong>
+        <p>Professional PA system available for your events on site or off site.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">🏢</span>
+      <div>
+        <strong>Conference Facilities</strong>
+        <p>Fully equipped meeting and conference rooms for corporate use.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">🏋️</span>
+      <div>
+        <strong>Aerobics Classes</strong>
+        <p>Stay fit with our regular aerobics sessions open to guests and the public.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">📺</span>
+      <div>
+        <strong>DSTv & Pool Table</strong>
+        <p>Relax with live sports, movies and a pool table at the bar.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">👶</span>
+      <div>
+        <strong>Children's Play Area</strong>
+        <p>A safe and fun space for the little ones while you relax.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">🚗</span>
+      <div>
+        <strong>Ample Parking</strong>
+        <p>Secure and spacious parking available for all guests.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">✈️</span>
+      <div>
+        <strong>Airport Shuttle</strong>
+        <p>Convenient airport transfers arranged on request.</p>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <span class="svc-ico">📶</span>
+      <div>
+        <strong> Wi-Fi</strong>
+        <p>Fast and reliable Wi-Fi throughout the hotel and gardens.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PHOTO GALLERY ===== -->
+<!-- ===== PHOTO GALLERY ===== -->
+<section class="gallery-section fade-up">
+  <div class="section-eyebrow" id="mkz-gallery">Gallery</div>
+  <h2 class="section-title-text">A Glimpse of MKz</h2>
+  <div class="home-gallery">
+    <div class="hg-card hg-tall"><img src="mkz-garden.jpg" loading="lazy" alt="Gardens"/><div class="hg-label">Gardens</div></div>
+    <div class="hg-card"><img src="main-hall.JPG" loading="lazy" alt="Conference"/><div class="hg-label">Conference Facilities</div></div>
+    <div class="hg-card"><img src="IMG-20260411-WA0036.jpg" loading="lazy" alt="Conference"/><div class="hg-label">Conference Room</div></div>
+    <div class="hg-card"><img src="bar-outside.JPG" loading="lazy" alt="Restaurant"/><div class="hg-label">Restaurant</div></div>
+    <div class="hg-card"><img src="dstv.jpeg" loading="lazy" alt="DSTv Lounge"/><div class="hg-label">DSTv Lounge</div></div>
+    <div class="hg-card"><img src="pooltable.jpeg" loading="lazy" alt="Pool Table"/><div class="hg-label">Pool Table</div></div>
+    <div class="hg-card"><img src="bouncing.jpeg" loading="lazy" alt="Play Area"/><div class="hg-label">Play Area</div></div>
+    <div class="hg-card hg-wide"><img src="parking-lot.jpg" loading="lazy" alt="Parking"/><div class="hg-label">Ample Parking</div></div>
+    <div class="hg-card"><img src="music-system.JPG" loading="lazy" alt="PA System"/><div class="hg-label">PA System</div></div>
+    <div class="hg-card"><img src="msg.jpeg" loading="lazy" alt="Massage Room"/><div class="hg-label">Massage Lounge</div></div>
+    <div class="hg-card"><img src="sauna.jpg" loading="lazy" alt="Sauna"/><div class="hg-label">Sauna</div></div>
+    <div class="hg-card"><img src="steam-entrance.jpg" loading="lazy" alt="Steam Bath"/><div class="hg-label">Steam Bathroom</div></div>
+    <div class="hg-card"><img src="steam-room.JPG" loading="lazy" alt="Steam Bath"/><div class="hg-label">Steam Bathroom</div></div>
+    <div class="hg-card hg-wide"><img src="aerobics.jpeg" loading="lazy" alt="Aerobics"/><div class="hg-label">Aerobics Classes</div></div>
+  </div>
+</section>
+
+<!-- ===== LANDSCAPES + EVENT AREA ===== -->
+<section class="landscapes-section fade-up">
+  <div class="section-eyebrow">Around The Property</div>
+  <h2 class="section-title-text">Explore Our Space</h2>
+
+  <!-- 4 landscape images side-scroll on mobile -->
+  <div class="landscape-scroll">
+
+    <div class="landscape-card">
+      <img src="parking-lot.jpg" loading="lazy" alt="Ample Parking Space" />
+      <div class="landscape-info">
+        <strong>Ample Parking</strong>
+        <p>Secure spacious parking for all your guests.</p>
+      </div>
+    </div>
+
+    <div class="landscape-card">
+      <img src="bouncing.jpeg" loading="lazy" alt="Bouncing Castle" />
+      <div class="landscape-info">
+        <strong>Bouncing Castle</strong>
+        <p>Fun for the little ones at every event.</p>
+      </div>
+    </div>
+
+    <div class="landscape-card">
+      <img src="aerobics.jpeg" loading="lazy" alt="Aerobics Classes" />
+      <div class="landscape-info">
+        <strong>Aerobics Classes</strong>
+        <p>Open to guests and the public. All levels welcome.</p>
+      </div>
+    </div>
+
+    <div class="landscape-card landscape-video-card">
+      <video autoplay muted loop playsinline loading="lazy" poster="event-area-thumb.jpg">
+        <source src="VID-20260412-WA0016.mp4" type="video/mp4">
+      </video>
+      <div class="landscape-info">
+        <strong>Event Area</strong>
+        <p>Weddings, introductions, corporate events & more.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Event enquiry CTA -->
+  <div class="event-cta-wrap">
+    <div class="event-cta-card fade-up">
+      <div class="event-cta-icon">🌿</div>
+      <div class="event-cta-text">
+        <strong>Planning an Event?</strong>
+        <p>We host weddings, introduction ceremonies, birthday parties, corporate events and social gatherings. Our beautiful gardens and facilities are ready for you.</p>
+      </div>
+      <a href="https://wa.me/256782530743?text=Hello%20MKz%20Gardens%20%26%20Hotel%2C%20I%20would%20like%20to%20enquire%20about%20hosting%20an%20event%20at%20your%20venue.%20Please%20share%20more%20details%20about%20availability%20and%20pricing.%20Thank%20you!" class="cta-wa-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        I Have an Event — Let's Talk
+      </a>
+    </div>
+  </div>
+
+  <!-- PA System CTA -->
+  <div class="pa-cta-wrap fade-up">
+    <div class="pa-cta-card">
+      <div class="pa-cta-left">
+        <div class="pa-icon">🎤</div>
+        <div>
+          <strong>Public Address System For Hire</strong>
+          <p>Professional PA system available for events on site or off site anywhere in Wakiso and surrounding areas.</p>
+          <ul class="pa-features">
+            <li>🔊 High quality speakers</li>
+            <li>🎙 Microphones included</li>
+            <li>📍 On-site & off-site hire</li>
+            <li>✅ Setup & support provided</li>
+          </ul>
+        </div>
+      </div>
+      <a href="https://wa.me/256782530743?text=Hello%20MKz%20Gardens%20%26%20Hotel%2C%20I%20would%20like%20to%20hire%20your%20Public%20Address%20System.%20Please%20share%20availability%20and%20pricing.%20Thank%20you!" class="cta-wa-btn pa-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Enquire About PA System
+      </a>
+    </div>
+  </div>
+
+</section>
+<section class="about-section fade-up">
+
+  <div class="about-tagline">
+    <div class="tagline-rule"></div>
+    <span class="tagline-text">"Service with Dignity"</span>
+    <div class="tagline-rule"></div>
+  </div>
+
+  <div class="section-eyebrow">Who We Are</div>
+  <h2 class="section-title-text">About MKz Gardens & Hotel</h2>
+
+  <div class="mv-grid">
+
+    <div class="mv-card">
+      <div class="mv-icon">🎯</div>
+      <h3 class="mv-title">Our Mission</h3>
+      <p>To provide a warm and inviting atmosphere, exceptional service, and unparalleled comfort to our guests. We strive to exceed expectations, build lasting relationships, and create memories that will make our guests want to return. We are committed to excellence, integrity, and sustainability in all that we do.</p>
+    </div>
+
+    <div class="mv-card">
+      <div class="mv-icon">🌟</div>
+      <h3 class="mv-title">Our Vision</h3>
+      <p>To be the leading hotel in the region, renowned for our exceptional service, luxurious amenities, and unparalleled guest experiences. We envision a future where our hotel is the first choice for travelers seeking comfort, relaxation, and inspiration.</p>
+    </div>
+
+  </div>
+
+  <div class="values-wrap">
+    <div class="section-eyebrow" style="margin-bottom:20px">Core Values</div>
+    <div class="values-grid">
+
+      <div class="value-item">
+        <span class="value-ico">🤝</span>
+        <div><strong>Hospitality</strong><p>Welcoming and caring for every guest.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">⭐</span>
+        <div><strong>Excellence</strong><p>Striving for high quality and continuous improvement.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">🔒</span>
+        <div><strong>Integrity</strong><p>Honesty, transparency and ethical behavior.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">🌍</span>
+        <div><strong>Respect</strong><p>Valuing diversity, inclusivity, and individuality.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">👥</span>
+        <div><strong>Teamwork</strong><p>Collaboration and support among employees.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">😊</span>
+        <div><strong>Guest Satisfaction</strong><p>Prioritizing guest experience and loyalty.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">📈</span>
+        <div><strong>Employee Development</strong><p>Investing in staff growth and well-being.</p></div>
+      </div>
+      <div class="value-item">
+        <span class="value-ico">✅</span>
+        <div><strong>Quality & Safety</strong><p>Ensuring high standards of cleanliness, safety, and maintenance.</p></div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="reviews-section fade-up">
+  <div class="section-eyebrow">Guest Experiences</div>
+  <h2 class="section-title-text">What Our Guests Say</h2>
+  <div class="stars-summary">
+    <div class="big-rating count-up" data-target="4.8">0</div>
+    <div class="stars-col">
+      <div class="star-row">⭐⭐⭐⭐⭐</div>
+      <div class="rating-count"><span class="count-up" data-target="124">0</span> reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card stagger" style="--i:0">
+      <div class="review-top">
+        <div class="reviewer-avatar">SK</div>
+        <div><div class="reviewer-name">Sarah K.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div>
+        <span class="review-badge">Verified Stay</span>
+      </div>
+      <p class="review-text">"The gardens are absolutely beautiful. We had our introduction ceremony here and everything was perfect. Staff were so welcoming."</p>
+      <div class="review-date">March 2026</div>
+    </div>
+    <div class="review-card stagger" style="--i:1">
+      <div class="review-top">
+        <div class="reviewer-avatar">JM</div>
+        <div><div class="reviewer-name">James M.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div>
+        <span class="review-badge">Verified Stay</span>
+      </div>
+      <p class="review-text">"Stayed for 3 nights. Room was clean, DSTv worked perfectly and the food is genuinely good. The matooke and goat was excellent!"</p>
+      <div class="review-date">February 2026</div>
+    </div>
+    <div class="review-card stagger" style="--i:2">
+      <div class="review-top">
+        <div class="reviewer-avatar">AN</div>
+        <div><div class="reviewer-name">Amina N.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div>
+        <span class="review-badge">Verified Stay</span>
+      </div>
+      <p class="review-text">"The sauna and massage session was so relaxing. Affordable prices and the therapist was very professional. Definitely coming back!"</p>
+      <div class="review-date">January 2026</div>
+    </div>
+    <div class="review-card stagger" style="--i:3">
+      <div class="review-top">
+        <div class="reviewer-avatar">PO</div>
+        <div><div class="reviewer-name">Peter O.</div><div class="review-stars">⭐⭐⭐⭐⭐</div></div>
+        <span class="review-badge">Verified Stay</span>
+      </div>
+      <p class="review-text">"We held our company conference here. The room was well set up, food during the break was fresh, and parking was no problem at all."</p>
+      <div class="review-date">December 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOATING BUTTONS ===== -->
+<div class="float-group" id="floatGroup">
+  <div class="float-wa-numbers" id="waNumbers">
+    <a href="https://wa.me/256701530743" class="wa-num-btn" target="_blank"><i class="fab fa-whatsapp"></i> +256 701 530 743</a>
+    <a href="https://wa.me/256782530743" class="wa-num-btn" target="_blank"><i class="fab fa-whatsapp"></i> +256 782 530 743</a>
+    <a href="https://wa.me/256702530743" class="wa-num-btn" target="_blank"><i class="fab fa-whatsapp"></i> +256 702 530 743</a>
+  </div>
+  <a href="tel:+256709214762" class="float-btn float-call" title="Call us"><i class="fas fa-phone"></i></a>
+  <button class="float-btn float-wa" id="waToggle" title="WhatsApp us"><i class="fab fa-whatsapp"></i></button>
+</div>
+
+<script src="script-search.js"></script>
+<script src="script-hamburger.js"></script>
+<script src="script.js"></script>
+
+<script>
+// ── Slideshow ──
+(function(){
+  let slides = document.querySelectorAll('.slide');
+  let cur = 0;
+  function show(i){ slides.forEach((s,j)=>{ s.classList.toggle('active', i===j); }); }
+  show(0);
+  setInterval(()=>{ cur=(cur+1)%slides.length; show(cur); }, 4000);
+})();
+
+// ── Hero text reveal — words drop in one by one ──
+(function(){
+  const h1 = document.querySelector('.hero-split');
+  if(!h1) return;
+  const words = h1.textContent.trim().split(' ');
+  h1.innerHTML = words.map((w,i)=>
+    `<span class="hw" style="animation-delay:${0.3 + i*0.15}s">${w}</span>`
+  ).join(' ');
+})();
+
+// ── Scroll animations ──
+const _obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('active');
+    // stagger children if any
+    el.querySelectorAll('.stagger').forEach((child, i) => {
+      child.style.transitionDelay = (i * 0.1) + 's';
+      child.classList.add('active');
+    });
+    _obs.unobserve(el);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => _obs.observe(el));
+
+// ── Count-up numbers ──
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseFloat(el.dataset.target);
+    const isDecimal = target % 1 !== 0;
+    const duration = 1400;
+    const steps = 50;
+    let step = 0;
+    const timer = setInterval(()=>{
+      step++;
+      const val = target * (step/steps);
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val);
+      if(step >= steps){ el.textContent = isDecimal ? target.toFixed(1) : target; clearInterval(timer); }
+    }, duration/steps);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.count-up').forEach(el => countObs.observe(el));
+
+// ── Floating WhatsApp toggle ──
+const waToggle  = document.getElementById('waToggle');
+const waNumbers = document.getElementById('waNumbers');
+waToggle.addEventListener('click', e => {
+  e.stopPropagation();
+  waNumbers.classList.toggle('open');
+  waToggle.classList.toggle('active');
+});
+document.addEventListener('click', () => {
+  waNumbers.classList.remove('open');
+  waToggle.classList.remove('active');
+});
+</script>
+
+</body>
+<section id="footer">
+<footer>
+  <div class="footer-inner">
+    <p class="footer-heading">For More Information</p>
+
+    <div class="footer-grid">
+      <div class="section-label">Follow Our Socials</div>
+      <a href="https://www.tiktok.com/@mkzgardens0" target="_blank" class="tiktok-icon-link" title="TikTok">
+        <svg class="tiktok-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.16 8.16 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1-.07z"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer-grid">
+      <div class="contact-block">
+        <div class="section-label">Contact Us</div>
+        <div class="phone-row">
+          <div class="phone-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </div>
+          <div class="phone-numbers">
+            <span class="phone-num">+256 782 530 743</span>
+            <span class="phone-num">+256 701 530 743</span>
+            <span class="phone-num">+256 709 214 762 <span class="phone-tag">Landline</span></span>
+          </div>
+        </div>
+        <div class="section-label" style="margin-top:20px;">Merchant Codes</div>
+        <div class="merchant-row">
+          <div class="merchant-pill"><span class="merchant-network">MTN</span><span class="merchant-code">506127</span></div>
+          <div class="merchant-pill"><span class="merchant-network">Airtel</span><span class="merchant-code">653841</span></div>
+        </div>
+      </div>
+      <div class="divider-line"></div>
+      <div class="location-block">
+        <div class="section-label">Our Location</div>
+        <div class="location-body">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="location-text">
+            <span class="location-line"><strong>Wakiso</strong>, Near Kisimbiri C.O.U</span>
+            <span class="location-line">Primary School</span>
+            <span class="location-line">Off <strong>Kikookiro Road</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom" id="Contact">
+      <p>© 2026 MKz Gardens & Hotel Wakiso &nbsp;·&nbsp; All Rights Reserved</p>
+      <p>Designed by: <a style="color:var(--gold)" href="tel:+256701115463">Edrine</a></p>
+    </div>
+  </div>
+</footer>
+</section>
+</body>
+</html>
