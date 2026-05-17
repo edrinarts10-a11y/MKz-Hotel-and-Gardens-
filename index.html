@@ -703,5 +703,306 @@ document.addEventListener('click', () => {
   </div>
 </footer>
 </section>
+<!-- ═══════════ HAVEN BOT — MKz Hotel Guest Assistant ═══════════ -->
+<button class="haven-toggle" id="havenToggle" onclick="havenToggle()" aria-label="Chat with Haven">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <span class="haven-notif hidden" id="havenNotif">1</span>
+</button>
+
+<div class="haven-window" id="havenWindow">
+  <div class="haven-header">
+    <div class="haven-avatar">🏨</div>
+    <div>
+      <div class="haven-name">Haven <span class="haven-badge">AI</span></div>
+      <div class="haven-status"><span class="haven-dot"></span> MKz Guest Assistant</div>
+    </div>
+    <button class="haven-close" onclick="havenToggle()">✕</button>
+  </div>
+  <div class="haven-messages" id="havenMessages"></div>
+  <div class="haven-input-row" id="havenInputRow" style="display:none">
+    <input class="haven-input" id="havenInput" placeholder="Ask Haven anything…" autocomplete="off"/>
+    <button class="haven-send" onclick="havenSend()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<style>
+.haven-toggle{
+  position:fixed;bottom:24px;left:20px;z-index:9990;
+  width:54px;height:54px;border-radius:50%;border:none;
+  background:linear-gradient(135deg,#0f3d2e,#1a5c44);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(15,61,46,0.5);
+  transition:transform 0.2s;
+  animation:havenPulse 3s 6s infinite;
+}
+.haven-toggle:hover{transform:scale(1.08)}
+@keyframes havenPulse{
+  0%,100%{box-shadow:0 4px 20px rgba(15,61,46,0.5)}
+  50%{box-shadow:0 0 0 12px rgba(15,61,46,0.12),0 4px 20px rgba(15,61,46,0.5)}
+}
+.haven-notif{
+  position:absolute;top:-3px;right:-3px;
+  background:#c9a84c;color:#0a0a14;width:18px;height:18px;
+  border-radius:50%;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #0f0f1a;font-family:'Raleway',sans-serif;
+}
+.haven-notif.hidden{display:none!important}
+.haven-window{
+  position:fixed;bottom:88px;right:16px;z-index:9989;
+  width:316px;max-width:calc(100vw - 32px);
+  background:#0f1820;
+  border:1px solid rgba(201,168,76,0.25);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  display:none;flex-direction:column;
+}
+.haven-window.open{display:flex;animation:hUp 0.3s cubic-bezier(0.16,1,0.3,1)}
+@keyframes hUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.haven-header{
+  background:linear-gradient(135deg,#0f3d2e,#1a5c44);
+  padding:13px 16px;display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.haven-avatar{font-size:20px;flex-shrink:0}
+.haven-name{font-size:13px;font-weight:600;color:white;display:flex;align-items:center;gap:5px;font-family:'Cinzel',serif}
+.haven-badge{font-size:8px;letter-spacing:1px;background:rgba(201,168,76,0.3);color:#c9a84c;padding:2px 6px;border-radius:3px;font-weight:700;font-family:'Raleway',sans-serif}
+.haven-status{font-size:10px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:4px;margin-top:2px}
+.haven-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;display:inline-block;animation:hvBlink 2s infinite}
+@keyframes hvBlink{0%,100%{opacity:1}50%{opacity:0.3}}
+.haven-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.5);cursor:pointer;font-size:14px;padding:4px;transition:color 0.2s}
+.haven-close:hover{color:white}
+.haven-messages{
+  flex:1;overflow-y:auto;padding:14px;
+  display:flex;flex-direction:column;gap:9px;
+  min-height:260px;max-height:340px;
+  background:#080d12;
+  scrollbar-width:thin;scrollbar-color:rgba(201,168,76,0.15) transparent;
+}
+.hm{max-width:84%;padding:10px 13px;border-radius:14px;font-size:12px;line-height:1.65;animation:hmIn 0.22s ease;font-family:'Raleway',sans-serif}
+@keyframes hmIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.hm.bot{background:#162030;border:1px solid rgba(201,168,76,0.12);color:rgba(240,236,227,0.85);align-self:flex-start;border-bottom-left-radius:3px}
+.hm.user{background:linear-gradient(135deg,#0f3d2e,#1a5c44);color:white;align-self:flex-end;border-bottom-right-radius:3px;font-weight:500}
+.hm a{color:#c9a84c;font-weight:700;text-decoration:underline}
+.hm-typing{background:#162030;border:1px solid rgba(201,168,76,0.12);align-self:flex-start;padding:12px 15px;border-radius:14px;border-bottom-left-radius:3px;display:flex;gap:4px;align-items:center}
+.hm-typing span{width:6px;height:6px;background:rgba(201,168,76,0.5);border-radius:50%;animation:hDot 1.2s infinite}
+.hm-typing span:nth-child(2){animation-delay:.2s}
+.hm-typing span:nth-child(3){animation-delay:.4s}
+@keyframes hDot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.haven-btns{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;max-width:94%}
+.haven-btn{
+  background:rgba(201,168,76,0.08);
+  border:1px solid rgba(201,168,76,0.28);
+  color:#c9a84c;padding:7px 12px;border-radius:20px;
+  font-size:11px;font-weight:600;cursor:pointer;
+  font-family:'Raleway',sans-serif;
+  transition:background 0.2s,transform 0.15s;
+}
+.haven-btn:hover{background:rgba(201,168,76,0.18);transform:translateY(-1px)}
+.haven-input-row{
+  border-top:1px solid rgba(201,168,76,0.1);
+  padding:10px 12px;display:flex;gap:7px;align-items:center;
+  background:#0f1820;
+}
+.haven-input{
+  flex:1;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(201,168,76,0.15);
+  border-radius:20px;padding:9px 14px;color:white;
+  font-family:'Raleway',sans-serif;font-size:12px;
+  outline:none;transition:border-color 0.2s;
+}
+.haven-input:focus{border-color:rgba(201,168,76,0.45)}
+.haven-input::placeholder{color:rgba(240,236,227,0.3)}
+.haven-send{
+  width:32px;height:32px;border-radius:50%;border:none;
+  background:linear-gradient(135deg,#0f3d2e,#1a5c44);
+  color:#c9a84c;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:opacity 0.2s,transform 0.15s;
+}
+.haven-send:hover{opacity:0.85;transform:scale(1.08)}
+</style>
+
+<script>
+(function(){
+  const WA1='256782530743';
+  const WA2='256701530743';
+  const WA3='256702530743';
+  const CALL='256709214762';
+  let isOpen=false,started=false,guestName='';
+  const win=document.getElementById('havenWindow');
+  const msgs=document.getElementById('havenMessages');
+  const notif=document.getElementById('havenNotif');
+  const iRow=document.getElementById('havenInputRow');
+  const iEl=document.getElementById('havenInput');
+
+  window.havenSend=function(){};
+
+  window.havenToggle=function(){
+    isOpen=!isOpen;
+    win.classList.toggle('open',isOpen);
+    notif.classList.add('hidden');
+    if(isOpen&&!started){started=true;setTimeout(flow,400);}
+    if(isOpen) msgs.scrollTop=msgs.scrollHeight;
+  };
+
+  function sd(){msgs.scrollTop=msgs.scrollHeight;}
+
+  function bub(text,type='bot'){
+    const d=document.createElement('div');
+    d.className='hm '+type;d.innerHTML=text;
+    msgs.appendChild(d);sd();
+  }
+
+  function say(text,delay=0){
+    return new Promise(res=>{
+      setTimeout(()=>{
+        const t=document.createElement('div');
+        t.className='hm-typing';
+        t.innerHTML='<span></span><span></span><span></span>';
+        msgs.appendChild(t);sd();
+        setTimeout(()=>{t.remove();bub(text,'bot');res();},950);
+      },delay);
+    });
+  }
+
+  function addBtns(opts,cb){
+    const w=document.createElement('div');
+    w.className='haven-btns';
+    opts.forEach(o=>{
+      const b=document.createElement('button');
+      b.className='haven-btn';b.textContent=o;
+      b.onclick=()=>{w.remove();cb(o);};
+      w.appendChild(b);
+    });
+    msgs.appendChild(w);sd();
+  }
+
+  function showInput(ph,cb){
+    iRow.style.display='flex';iEl.placeholder=ph;iEl.value='';
+    setTimeout(()=>iEl.focus(),100);
+    const go=()=>{
+      if(!iEl.value.trim()) return;
+      const v=iEl.value.trim();
+      iRow.style.display='none';
+      window.havenSend=function(){};
+      bub(v,'user');cb(v);
+    };
+    iEl.onkeypress=e=>{if(e.key==='Enter')go();};
+    window.havenSend=go;
+  }
+
+  function waBtn(label, number, msg){
+    const wa=encodeURIComponent(msg);
+    return `<a href="https://wa.me/${number}?text=${wa}" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#25d366;color:#fff;padding:9px 14px;border-radius:16px;text-decoration:none;font-weight:700;font-size:12px;margin-top:4px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>${label}</a>`;
+  }
+
+  /* ── MAIN FLOW ── */
+  async function flow(){
+    await say("🌿 Welcome to <strong>MKz Gardens & Hotel Wakiso!</strong>");
+    await say("I'm <strong>Haven</strong>, your personal guest assistant. How can I help you today?",300);
+    setTimeout(()=>{
+      addBtns([
+        "🛏 Book a Room",
+        "🍽 Restaurant & Bar",
+        "🧖 Sauna & Wellness",
+        "📍 Location & Directions",
+        "💳 Payment Methods",
+        "🎤 Events & PA Hire",
+      ], handleMain);
+    },400);
+  }
+
+  async function handleMain(o){
+    bub(o,'user');
+
+    if(o==="🛏 Book a Room"){
+      await say("I'll help you reserve a room at MKz! 🛏");
+      await say("What's your name please?",200);
+      showInput("Your name…", async name=>{
+        guestName=name;
+        await say(`Lovely to meet you, <strong>${guestName}</strong>! 😊`);
+        await say("Which room type would you like?",200);
+        setTimeout(()=>addBtns(["🛏 Standard Room","👑 Deluxe Room"],async room=>{
+          bub(room,'user');
+          await say("Perfect! When would you like to check in?",200);
+          showInput("Check-in date e.g. 20 May 2026", async checkin=>{
+            await say("And what date will you check out?",200);
+            showInput("Check-out date e.g. 22 May 2026", async checkout=>{
+              const msg=`Hello MKz Gardens & Hotel 🌿\n\nI would like to book a room:\n\n👤 Name: ${guestName}\n🛏 Room: ${room}\n📅 Check-in: ${checkin}\n📅 Check-out: ${checkout}\n\nPlease confirm availability. Thank you!`;
+              await say(`All set <strong>${guestName}</strong>! Tap below to send your booking. We confirm within minutes. ✅`,200);
+              setTimeout(()=>{
+                bub(waBtn("Send Booking on WhatsApp",WA1,msg),'bot');
+                setTimeout(()=>addBtns(["🔙 Main Menu"],()=>{msgs.innerHTML='';started=false;setTimeout(flow,300);}),600);
+              },400);
+            });
+          });
+        }),400);
+      });
+
+    } else if(o==="🍽 Restaurant & Bar"){
+      await say("Our restaurant is open <strong>7 AM – 10 PM daily</strong>. 🍽");
+      await say("We serve Ugandan classics, grills, fast food, full breakfast and a wide selection of drinks at the bar. Last orders at 9:30 PM.",300);
+      await say("🎵 <strong>Live band every Saturday night!</strong>",200);
+      setTimeout(()=>addBtns(["📋 See Full Menu","🍹 Bar Stock","🔙 Main Menu"],async o2=>{
+        bub(o2,'user');
+        if(o2==="📋 See Full Menu"){ window.location.href='restaurant.html'; }
+        else if(o2==="🍹 Bar Stock"){ window.location.href='restaurant.html#wines-menu'; }
+        else { msgs.innerHTML='';started=false;setTimeout(flow,300); }
+      }),400);
+
+    } else if(o==="🧖 Sauna & Wellness"){
+      await say("We offer a full wellness experience right here at MKz! 🧖");
+      await say("• 🔥 <strong>Finnish Sauna</strong> — dry heat therapy<br>• 💨 <strong>Steam Bathroom</strong> — moist heat & skin cleanse<br>• 🤲 <strong>Body Massage</strong> — professional therapists<br>• 🏋️ <strong>Aerobics Classes</strong> — open to guests & public",300);
+      await say("Open Mon–Fri 8AM–8PM · Sat–Sun 7AM–9PM",200);
+      const msg=`Hello MKz Gardens & Hotel 🌿\n\nI would like to book a wellness session (sauna/steam/massage/aerobics).\n\nPlease let me know availability. Thank you!`;
+      setTimeout(()=>{
+        bub(waBtn("Book a Wellness Session",WA1,msg),'bot');
+        setTimeout(()=>addBtns(["🔙 Main Menu"],()=>{msgs.innerHTML='';started=false;setTimeout(flow,300);}),500);
+      },400);
+
+    } else if(o==="📍 Location & Directions"){
+      await say("We are located in <strong>Wakiso, Uganda</strong> 📍");
+      await say("Off <strong>Kikookiro Road</strong>, near Kisimbiri C.O.U Primary School. Easy to find!",300);
+      const msg=`Hello! I need directions to MKz Gardens & Hotel Wakiso. Can you help me?`;
+      setTimeout(()=>{
+        bub(waBtn("Get Directions on WhatsApp",WA1,msg),'bot');
+        setTimeout(()=>addBtns(["📞 Call for Directions","🔙 Main Menu"],async o2=>{
+          bub(o2,'user');
+          if(o2==="📞 Call for Directions"){
+            await say(`Call us directly: <a href="tel:+${CALL}"><strong>+256 709 214 762</strong></a> 📞`);
+          } else { msgs.innerHTML='';started=false;setTimeout(flow,300); }
+        }),500);
+      },400);
+
+    } else if(o==="💳 Payment Methods"){
+      await say("We accept the following payment methods:");
+      await say("📱 <strong>MTN Mobile Money</strong> — Merchant Code: <strong>506127</strong><br>📱 <strong>Airtel Money</strong> — Merchant Code: <strong>653841</strong><br>💵 <strong>Cash</strong> — UGX accepted<br>💳 <strong>Bank Transfer</strong> — ask us for details",300);
+      setTimeout(()=>addBtns(["🛏 Book a Room","🔙 Main Menu"],o2=>{
+        bub(o2,'user');
+        if(o2==="🛏 Book a Room"){ msgs.innerHTML='';started=false;guestName='';setTimeout(()=>handleMain("🛏 Book a Room"),200); }
+        else { msgs.innerHTML='';started=false;setTimeout(flow,300); }
+      }),400);
+
+    } else if(o==="🎤 Events & PA Hire"){
+      await say("MKz is a perfect venue for events! 🌿");
+      await say("• 💒 Weddings & Introductions<br>• 🎂 Birthday Parties<br>• 🏢 Corporate & Conference<br>• 🎉 Social Gatherings<br>• 🎤 <strong>PA System for Hire</strong> — on-site & off-site",300);
+      await say("Our beautiful gardens can host both intimate and large events.",200);
+      const msg=`Hello MKz Gardens & Hotel 🌿\n\nI am interested in booking your event space / PA system.\n\nEvent Type: \nDate: \nNumber of Guests: \nSpecial Requirements: \n\nPlease get back to me. Thank you!`;
+      setTimeout(()=>{
+        bub(waBtn("Enquire About Events",WA1,msg),'bot');
+        setTimeout(()=>addBtns(["🔙 Main Menu"],()=>{msgs.innerHTML='';started=false;setTimeout(flow,300);}),500);
+      },400);
+    }
+  }
+
+  // Show notif after 7s
+  setTimeout(()=>{ if(!isOpen) notif.classList.remove('hidden'); },7000);
+})();
+</script>
+
 </body>
 </html>
